@@ -1,0 +1,11 @@
+C:\Users\patri\OneDrive\Desktop\Estacionamiento_proyecto\Estacionamiento_proyecto\bin\Debug\Estacionamiento_proyecto.exe.config
+C:\Users\patri\OneDrive\Desktop\Estacionamiento_proyecto\Estacionamiento_proyecto\bin\Debug\Estacionamiento_proyecto.exe
+C:\Users\patri\OneDrive\Desktop\Estacionamiento_proyecto\Estacionamiento_proyecto\bin\Debug\Estacionamiento_proyecto.pdb
+C:\Users\patri\OneDrive\Desktop\Estacionamiento_proyecto\Estacionamiento_proyecto\obj\Debug\Estacionamiento_proyecto.csproj.AssemblyReference.cache
+C:\Users\patri\OneDrive\Desktop\Estacionamiento_proyecto\Estacionamiento_proyecto\obj\Debug\Estacionamiento_proyecto.csproj.SuggestedBindingRedirects.cache
+C:\Users\patri\OneDrive\Desktop\Estacionamiento_proyecto\Estacionamiento_proyecto\obj\Debug\Estacionamiento_proyecto.Form1.resources
+C:\Users\patri\OneDrive\Desktop\Estacionamiento_proyecto\Estacionamiento_proyecto\obj\Debug\Estacionamiento_proyecto.Properties.Resources.resources
+C:\Users\patri\OneDrive\Desktop\Estacionamiento_proyecto\Estacionamiento_proyecto\obj\Debug\Estacionamiento_proyecto.csproj.GenerateResource.cache
+C:\Users\patri\OneDrive\Desktop\Estacionamiento_proyecto\Estacionamiento_proyecto\obj\Debug\Estacionamiento_proyecto.csproj.CoreCompileInputs.cache
+C:\Users\patri\OneDrive\Desktop\Estacionamiento_proyecto\Estacionamiento_proyecto\obj\Debug\Estacionamiento_proyecto.exe
+C:\Users\patri\OneDrive\Desktop\Estacionamiento_proyecto\Estacionamiento_proyecto\obj\Debug\Estacionamiento_proyecto.pdb
