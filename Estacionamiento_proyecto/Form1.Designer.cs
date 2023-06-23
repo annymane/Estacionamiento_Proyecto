@@ -54,7 +54,7 @@
             // pbxCarrito1
             // 
             this.pbxCarrito1.Image = ((System.Drawing.Image)(resources.GetObject("pbxCarrito1.Image")));
-            this.pbxCarrito1.Location = new System.Drawing.Point(23, 253);
+            this.pbxCarrito1.Location = new System.Drawing.Point(163, 253);
             this.pbxCarrito1.Name = "pbxCarrito1";
             this.pbxCarrito1.Size = new System.Drawing.Size(84, 58);
             this.pbxCarrito1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -64,7 +64,7 @@
             // pbxCarrito2
             // 
             this.pbxCarrito2.Image = ((System.Drawing.Image)(resources.GetObject("pbxCarrito2.Image")));
-            this.pbxCarrito2.Location = new System.Drawing.Point(23, 434);
+            this.pbxCarrito2.Location = new System.Drawing.Point(163, 434);
             this.pbxCarrito2.Name = "pbxCarrito2";
             this.pbxCarrito2.Size = new System.Drawing.Size(84, 58);
             this.pbxCarrito2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -74,7 +74,7 @@
             // pbxCarrito3
             // 
             this.pbxCarrito3.Image = ((System.Drawing.Image)(resources.GetObject("pbxCarrito3.Image")));
-            this.pbxCarrito3.Location = new System.Drawing.Point(-70, 253);
+            this.pbxCarrito3.Location = new System.Drawing.Point(41, 253);
             this.pbxCarrito3.Name = "pbxCarrito3";
             this.pbxCarrito3.Size = new System.Drawing.Size(87, 58);
             this.pbxCarrito3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -85,7 +85,7 @@
             // pbxCarrito4
             // 
             this.pbxCarrito4.Image = ((System.Drawing.Image)(resources.GetObject("pbxCarrito4.Image")));
-            this.pbxCarrito4.Location = new System.Drawing.Point(-70, 434);
+            this.pbxCarrito4.Location = new System.Drawing.Point(41, 434);
             this.pbxCarrito4.Name = "pbxCarrito4";
             this.pbxCarrito4.Size = new System.Drawing.Size(87, 58);
             this.pbxCarrito4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;

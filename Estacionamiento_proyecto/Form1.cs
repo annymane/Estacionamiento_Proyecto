@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace Estacionamiento_proyecto
 {
@@ -17,7 +18,7 @@ namespace Estacionamiento_proyecto
         //variables para el pictureBox
         private int direction = 1; // Dirección inicial del movimiento
         private int speed = 2; // Velocidad de movimiento
-        private int limit = 140; // Límite del movimiento
+        private int limit = 240; // Límite del movimiento
         private bool stopMovement = false; // Variable para controlar la detención
         private Queue<PictureBox> carrosEspera = new Queue<PictureBox>();
 
@@ -49,9 +50,11 @@ namespace Estacionamiento_proyecto
                     carro.Left += direction * speed;
                 }
 
+
                 // Comprobar límites
                 bool reachLimit = carrosEnMovimiento.Any(carro =>
                     carro.Left <= 0 || carro.Left + carro.Width >= limit);
+
 
                 // Comprobar límites1
                 if (reachLimit)
@@ -60,15 +63,13 @@ namespace Estacionamiento_proyecto
                     direction *= -1;
 
                     // Detener el movimiento si se alcanza el límite deseado
-                    if (pbxCarrito1.Left <= 0)
-                        pbxCarrito1.Left = 0;
-                    else if (pbxCarrito1.Left + pbxCarrito1.Width >= limit)
-                        pbxCarrito1.Left = limit - pbxCarrito1.Width;
-
-                    if (pbxCarrito2.Left <= 0)
-                        pbxCarrito2.Left = 0;
-                    else if (pbxCarrito2.Left + pbxCarrito2.Width >= limit)
-                        pbxCarrito2.Left = limit - pbxCarrito2.Width;
+                    foreach (PictureBox carro in carrosEnMovimiento)
+                    {
+                        if (carro.Left <= 0)
+                            carro.Left = 0;
+                        else if (carro.Left + carro.Width >= limit)
+                            carro.Left = limit - carro.Width;
+                    }
 
                     stopMovement = true;
 
@@ -109,8 +110,8 @@ namespace Estacionamiento_proyecto
                     carrosEnMovimiento.Remove(pbxCarrito2);
                     stopMovement = true;
                 }
-               
             }
+
 
             // Verificar si no hay carros en movimiento y aún hay carros en espera
             if (carrosEnMovimiento.Count == 0 && carrosEspera.Count > 0)
@@ -124,8 +125,8 @@ namespace Estacionamiento_proyecto
                 // Recorrer la lista de carros en espera
                 for (int i = 0; i < cantidadCarrosEspera; i++)
                 {
-                    // Generar un tiempo de espera aleatorio entre 3 y 8 segundos
-                    int delayMilliseconds = random.Next(3000, 8001);
+                    // Generar un tiempo de espera aleatorio entre 2 y 4 segundos
+                    int delayMilliseconds = random.Next(2000, 9001);
                     await Task.Delay(delayMilliseconds);
 
                     // Obtener un índice aleatorio dentro del rango de la lista de carros en espera
@@ -137,19 +138,26 @@ namespace Estacionamiento_proyecto
                     // Hacer el PictureBox visible
                     carro.Visible = true;
 
+                    // Cambiar la dirección del movimiento hacia la derecha
+                    direction = 1;
+
                     // Agregar el carro a la lista de carros en movimiento
                     carrosEnMovimiento.Add(carro);
 
                     // Remover el carro de la lista de carros en espera
                     carrosEsperaLista.Remove(carro);
+
+                    // Mover el carro individualmente hacia la derecha
+                    while (carro.Left > 0 && carro.Left + carro.Width < limit)
+                    {
+                        carro.Left += direction * speed;
+
+                        // Esperar un intervalo de tiempo antes de mover el carro nuevamente
+                        await Task.Delay(10);
+                    }
                 }
-
-                // Reiniciar el movimiento
-                stopMovement = false;
+                
             }
-
-
-
         }
     }
 }
