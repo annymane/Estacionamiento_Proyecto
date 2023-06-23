@@ -43,12 +43,18 @@ namespace Estacionamiento_proyecto
         {
             if (!stopMovement)
             {
-                // Mover el PictureBox horizontalmente
-                pbxCarrito1.Left += direction * speed;
-                pbxCarrito2.Left += direction * speed;
+                // Mover los PictureBox horizontalmente
+                foreach (PictureBox carro in carrosEnMovimiento)
+                {
+                    carro.Left += direction * speed;
+                }
+
+                // Comprobar límites
+                bool reachLimit = carrosEnMovimiento.Any(carro =>
+                    carro.Left <= 0 || carro.Left + carro.Width >= limit);
 
                 // Comprobar límites1
-                if (pbxCarrito1.Left <= 0 || pbxCarrito1.Left + pbxCarrito1.Width >= limit || pbxCarrito2.Left <= 0 || pbxCarrito2.Left + pbxCarrito2.Width >= limit)
+                if (reachLimit)
                 {
                     // Cambiar la dirección cuando se alcanza un límite
                     direction *= -1;
@@ -103,22 +109,46 @@ namespace Estacionamiento_proyecto
                     carrosEnMovimiento.Remove(pbxCarrito2);
                     stopMovement = true;
                 }
-
+               
             }
 
             // Verificar si no hay carros en movimiento y aún hay carros en espera
             if (carrosEnMovimiento.Count == 0 && carrosEspera.Count > 0)
             {
-                // Seleccionar el primer carro en espera y hacerlo visible
-                PictureBox nuevoCarro = carrosEspera.Dequeue();
-                nuevoCarro.Visible = true;
+                Random random = new Random();
+                List<PictureBox> carrosEsperaLista = carrosEspera.ToList();
 
-                // Agregar el carro a la lista de carros en movimiento
-                carrosEnMovimiento.Add(nuevoCarro);
+                // Obtener la cantidad de carros en espera antes del bucle
+                int cantidadCarrosEspera = carrosEsperaLista.Count;
+
+                // Recorrer la lista de carros en espera
+                for (int i = 0; i < cantidadCarrosEspera; i++)
+                {
+                    // Generar un tiempo de espera aleatorio entre 3 y 8 segundos
+                    int delayMilliseconds = random.Next(3000, 8001);
+                    await Task.Delay(delayMilliseconds);
+
+                    // Obtener un índice aleatorio dentro del rango de la lista de carros en espera
+                    int index = random.Next(carrosEsperaLista.Count);
+
+                    // Obtener el PictureBox aleatoriamente
+                    PictureBox carro = carrosEsperaLista[index];
+
+                    // Hacer el PictureBox visible
+                    carro.Visible = true;
+
+                    // Agregar el carro a la lista de carros en movimiento
+                    carrosEnMovimiento.Add(carro);
+
+                    // Remover el carro de la lista de carros en espera
+                    carrosEsperaLista.Remove(carro);
+                }
 
                 // Reiniciar el movimiento
                 stopMovement = false;
             }
+
+
 
         }
     }
