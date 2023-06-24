@@ -23,10 +23,8 @@ namespace Estacionamiento_proyecto
         private bool stopMovement = false; // Variable para controlar la detención
         private Queue<PictureBox> carrosEspera = new Queue<PictureBox>();
 
-        //el add lo utilizamos para agregar un picturebox a otro
+        private PictureBox activeBar = null;
 
-
-        //utilizado para ubicar el carro en el picturebox base
 
 
         public Form1()
@@ -169,6 +167,9 @@ namespace Estacionamiento_proyecto
                     // Obtener el PictureBox aleatoriamente
                     PictureBox carro = carrosEsperaLista[index];
 
+                    // Obtener el número del carro seleccionado
+                    int numeroCarro = int.Parse(carro.Name.Replace("pbxCarrito", ""));
+
                     // Hacer el PictureBox visible
                     carro.Visible = true;
 
@@ -195,6 +196,25 @@ namespace Estacionamiento_proyecto
                     await Task.Delay(delayMilliseconds1);
 
                     carro.Visible = false;
+
+                    // Verificar si el número del carro es par o impar
+                    if (numeroCarro % 2 == 0)
+                    {
+
+                        if (!pbxCarrito4.Visible || !pbxCarrito6.Visible || !pbxCarrito8.Visible)
+                        {
+                            pbxbarra1.Visible = false;
+                        }
+
+                    }
+                    else
+                    {
+                        if (!pbxCarrito3.Visible || !pbxCarrito5.Visible || !pbxCarrito7.Visible)
+                        {
+                            pbxbarra.Visible = false;
+                        }
+
+                    }
                 }
             }
         }
