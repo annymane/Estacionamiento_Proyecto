@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace Estacionamiento_proyecto
 {
@@ -23,7 +24,7 @@ namespace Estacionamiento_proyecto
         private Queue<PictureBox> carrosEspera = new Queue<PictureBox>();
 
         //el add lo utilizamos para agregar un picturebox a otro
-        
+
 
         //utilizado para ubicar el carro en el picturebox base
 
@@ -51,12 +52,31 @@ namespace Estacionamiento_proyecto
 
         private async void Movimiento_pic(object sender, EventArgs e)
         {
+            // Verificar si pbxBarra está fuera del if
+            if ((pbxCarrito1.Visible && pbxCarrito2.Visible) || carrosEspera.Any(c => c.Visible))
+            {
+                pbxbarra.Visible = true;
+                pbxbarra.BackColor = Color.Red;
+
+                pbxbarra1.Visible = true;
+                pbxbarra1.BackColor = Color.Red;
+            }
+
+
             if (!stopMovement)
             {
                 // Mover los PictureBox horizontalmente
                 foreach (PictureBox carro in carrosEnMovimiento)
                 {
                     carro.Left += direction * speed;
+
+                    // Verificar si hay un PictureBox en frente
+                    PictureBox carroEnFrente = carrosEnMovimiento.FirstOrDefault(c => c.Left == carro.Left + carro.Width);
+                    if (carroEnFrente != null)
+                    {
+                        stopMovement = true; // Detener el movimiento si hay un PictureBox en frente
+                        break;
+                    }
                 }
 
 
@@ -68,6 +88,7 @@ namespace Estacionamiento_proyecto
                 // Comprobar límites1
                 if (reachLimit)
                 {
+                    stopMovement = true;
                     // Cambiar la dirección cuando se alcanza un límite
                     direction *= -1;
 
@@ -91,12 +112,14 @@ namespace Estacionamiento_proyecto
                         int delayMilliseconds1 = random.Next(3000, 5001);
                         await Task.Delay(delayMilliseconds1);
 
+                        pbxbarra.Visible = false;
                         pbxCarrito1.Visible = false; // Ocultar pbxCarrito1
 
                         // Generar un número aleatorio diferente entre 3000 y 5000 para el tiempo de espera de pbxCarrito2
                         int delayMilliseconds2 = random.Next(3000, 5001);
                         await Task.Delay(delayMilliseconds2);
 
+                        pbxbarra1.Visible = false;
                         pbxCarrito2.Visible = false; // Ocultar pbxCarrito2
                     }
                     else
@@ -105,12 +128,14 @@ namespace Estacionamiento_proyecto
                         int delayMilliseconds2 = random.Next(3000, 5001);
                         await Task.Delay(delayMilliseconds2);
 
+                        pbxbarra1.Visible = false;
                         pbxCarrito2.Visible = false; // Ocultar pbxCarrito2
 
                         // Generar un número aleatorio diferente entre 3000 y 5000 para el tiempo de espera de pbxCarrito1
                         int delayMilliseconds1 = random.Next(3000, 5001);
                         await Task.Delay(delayMilliseconds1);
 
+                        pbxbarra.Visible = false;
                         pbxCarrito1.Visible = false; // Ocultar pbxCarrito1
                     }
 
@@ -134,8 +159,8 @@ namespace Estacionamiento_proyecto
                 // Recorrer la lista de carros en espera
                 for (int i = 0; i < cantidadCarrosEspera; i++)
                 {
-                    // Generar un tiempo de espera aleatorio entre 2 y 4 segundos
-                    int delayMilliseconds = random.Next(2000, 9001);
+                    // Generar un tiempo de espera aleatorio entre 4 y 8 segundos
+                    int delayMilliseconds = random.Next(4000, 8001);
                     await Task.Delay(delayMilliseconds);
 
                     // Obtener un índice aleatorio dentro del rango de la lista de carros en espera
@@ -163,14 +188,14 @@ namespace Estacionamiento_proyecto
 
                         // Esperar un intervalo de tiempo antes de mover el carro nuevamente
                         await Task.Delay(10);
-                       
                     }
 
-                    int delayMilliseconds1 = random.Next(3000, 5001);
+                    // Generar un tiempo de espera aleatorio entre 4 y 8 segundos antes de ocultar el carro
+                    int delayMilliseconds1 = random.Next(4000, 8001);
                     await Task.Delay(delayMilliseconds1);
+
                     carro.Visible = false;
                 }
-                
             }
         }
     }

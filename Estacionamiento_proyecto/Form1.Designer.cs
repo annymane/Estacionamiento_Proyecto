@@ -38,6 +38,8 @@
             this.pbxCarrito5 = new System.Windows.Forms.PictureBox();
             this.pbxCarrito7 = new System.Windows.Forms.PictureBox();
             this.pbxCarrito8 = new System.Windows.Forms.PictureBox();
+            this.pbxbarra = new System.Windows.Forms.PictureBox();
+            this.pbxbarra1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxCarrito1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxCarrito2)).BeginInit();
@@ -47,12 +49,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbxCarrito5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxCarrito7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxCarrito8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxbarra)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxbarra1)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(-3, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(-3, -3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(1347, 748);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -146,11 +150,30 @@
             this.pbxCarrito8.TabStop = false;
             this.pbxCarrito8.Visible = false;
             // 
+            // pbxbarra
+            // 
+            this.pbxbarra.BackColor = System.Drawing.SystemColors.Window;
+            this.pbxbarra.Location = new System.Drawing.Point(516, 263);
+            this.pbxbarra.Name = "pbxbarra";
+            this.pbxbarra.Size = new System.Drawing.Size(10, 102);
+            this.pbxbarra.TabIndex = 9;
+            this.pbxbarra.TabStop = false;
+            // 
+            // pbxbarra1
+            // 
+            this.pbxbarra1.Location = new System.Drawing.Point(516, 372);
+            this.pbxbarra1.Name = "pbxbarra1";
+            this.pbxbarra1.Size = new System.Drawing.Size(10, 106);
+            this.pbxbarra1.TabIndex = 10;
+            this.pbxbarra1.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1342, 747);
+            this.Controls.Add(this.pbxbarra1);
+            this.Controls.Add(this.pbxbarra);
             this.Controls.Add(this.pbxCarrito8);
             this.Controls.Add(this.pbxCarrito7);
             this.Controls.Add(this.pbxCarrito5);
@@ -171,6 +194,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbxCarrito5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxCarrito7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxCarrito8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxbarra)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxbarra1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -186,6 +211,8 @@
         private System.Windows.Forms.PictureBox pbxCarrito5;
         private System.Windows.Forms.PictureBox pbxCarrito7;
         private System.Windows.Forms.PictureBox pbxCarrito8;
+        private System.Windows.Forms.PictureBox pbxbarra;
+        private System.Windows.Forms.PictureBox pbxbarra1;
     }
 }
 
