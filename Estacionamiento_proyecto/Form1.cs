@@ -154,7 +154,12 @@ namespace Estacionamiento_proyecto
 
                         // Esperar un intervalo de tiempo antes de mover el carro nuevamente
                         await Task.Delay(10);
+                       
                     }
+
+                    int delayMilliseconds1 = random.Next(3000, 5001);
+                    await Task.Delay(delayMilliseconds1);
+                    carro.Visible = false;
                 }
                 
             }
