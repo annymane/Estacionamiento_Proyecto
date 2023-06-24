@@ -18,9 +18,14 @@ namespace Estacionamiento_proyecto
         //variables para el pictureBox
         private int direction = 1; // Dirección inicial del movimiento
         private int speed = 2; // Velocidad de movimiento
-        private int limit = 240; // Límite del movimiento
+        private int limit = 333; // Límite del movimiento
         private bool stopMovement = false; // Variable para controlar la detención
         private Queue<PictureBox> carrosEspera = new Queue<PictureBox>();
+
+        //el add lo utilizamos para agregar un picturebox a otro
+        
+
+        //utilizado para ubicar el carro en el picturebox base
 
 
         public Form1()
@@ -37,6 +42,10 @@ namespace Estacionamiento_proyecto
             pbxCarrito2.Visible = true;
             carrosEspera.Enqueue(pbxCarrito3);
             carrosEspera.Enqueue(pbxCarrito4);
+            carrosEspera.Enqueue(pbxCarrito5);
+            carrosEspera.Enqueue(pbxCarrito6);
+            carrosEspera.Enqueue(pbxCarrito7);
+            carrosEspera.Enqueue(pbxCarrito8);
 
         }
 
